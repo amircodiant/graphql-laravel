@@ -25,6 +25,14 @@ class UpdateUserPasswordMutation extends Mutation
         ];
     }
 
+    public function rules()
+    {
+        return [
+            'id' => ['required'],
+            'password' => ['required', 'email']
+        ];
+    }
+    
     public function resolve($root, $args)
     {
         $user = User::find($args['id']);

@@ -124,7 +124,8 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                'users' => 'App\GraphQL\Query\UsersQuery'
+                'user' => 'App\GraphQL\Query\User\UserQuery',
+                'users' => 'App\GraphQL\Query\User\UsersQuery'
             ],
             'mutation' => [
                 'updateUserPassword' => 'App\GraphQL\Mutation\UpdateUserPasswordMutation'

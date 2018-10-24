@@ -1,5 +1,5 @@
 <?php 
-namespace App\GraphQL\Query;
+namespace App\GraphQL\Query\User;
 
 use GraphQL;
 use GraphQL\Type\Definition\Type;
