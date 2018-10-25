@@ -123,13 +123,8 @@ return [
      */
     'schemas' => [
         'default' => [
-            'query' => [
-                'user' => 'App\GraphQL\Query\User\UserQuery',
-                'users' => 'App\GraphQL\Query\User\UsersQuery'
-            ],
-            'mutation' => [
-                'updateUserPassword' => 'App\GraphQL\Mutation\UpdateUserPasswordMutation'
-            ]
+            'query' => \App\GraphQL\QueryList::defaultSchemas(),
+            'mutation' => \App\GraphQL\MutationList::defaultMutation(),
         ]
     ],
 
@@ -168,9 +163,7 @@ return [
      *     'App\GraphQL\Type\UserType'
      * ]
      */
-    'types' => [
-        'User' => 'App\GraphQL\Type\UserType',  
-    ],
+    'types' => \App\GraphQL\TypeList::type(),
 
     /*
      * This callable will receive all the Exception objects that are caught by GraphQL.

@@ -1,5 +1,5 @@
 <?php 
-namespace App\GraphQL\Mutation;
+namespace App\GraphQL\Mutation\User;
 
 use GraphQL;
 use GraphQL\Type\Definition\Type;
