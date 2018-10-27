@@ -1,24 +1,23 @@
 <?php
 
-namespace App\GraphQL\Query\User;
+namespace App\GraphQL\Query\Video;
 
 use Folklore\GraphQL\Support\Query;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
+use App\Video;
 
-use App\User;
-
-class UserQuery extends Query
+class VideoQuery extends Query
 {
     protected $attributes = [
-        'name' => 'UserQuery',
-        'description' => 'fetch single user'
+        'name' => 'VideoQuery',
+        'description' => 'A query'
     ];
 
     public function type()
     {
-        return GraphQL::type('User');
+        return GraphQL::type('Video');
     }
 
     public function args()
@@ -28,15 +27,14 @@ class UserQuery extends Query
         ];
     }
 
-
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        $user = User::find($args['id']);
+         $model = Video::find($args['id']);
 
-        if (!$user) {
+        if (!$model) {
             return null;
         }
 
-        return $user;
+        return $model;
     }
 }

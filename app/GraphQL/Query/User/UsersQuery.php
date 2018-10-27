@@ -9,7 +9,8 @@ use App\User;
 class UsersQuery extends Query
 {
     protected $attributes = [
-        'name' => 'users abc'
+        'name' => 'users abc',
+        'description' => 'fetch list of user'
     ];
 
     public function type()

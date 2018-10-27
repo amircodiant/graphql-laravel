@@ -10,7 +10,13 @@ final class MutationList
  	 *@param unique key value list for default mutation schema list 
  	 */
  	private static $defaultMutationList = [
- 		'updateUserPassword' => 'App\GraphQL\Mutation\User\UpdateUserPasswordMutation',
+ 		'updateUserPassword' 			=> 'App\GraphQL\Mutation\User\UpdateUserPasswordMutation',
+ 		'addNewUser'			 		=> 'App\GraphQL\Mutation\User\UserAddMutation',
+ 		'updateUser'			 		=> 'App\GraphQL\Mutation\User\UserUpdateMutation',
+ 		'deleteUser'			 		=> 'App\GraphQL\Mutation\User\UserDeteteMutation',
+
+
+ 		'addNewVideo'			 		=> 'App\GraphQL\Mutation\Video\addNewVideo',
  	];
 
  	/**

@@ -1,16 +1,18 @@
-<?php 
+<?php
+
 namespace App\GraphQL\Mutation\User;
 
-use GraphQL;
-use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Mutation;
+use GraphQL\Type\Definition\ResolveInfo;
+use GraphQL\Type\Definition\Type;
+use GraphQL;
 use App\User;
 
-class UpdateUserPasswordMutation extends Mutation
+class UserUpdateMutation extends Mutation
 {
     protected $attributes = [
-        'name' => 'updateUserPassword',
-        'description' => 'update user password'
+        'name' => 'UserUpdateMutation',
+        'description' => 'update user'
     ];
 
     public function type()
@@ -22,19 +24,20 @@ class UpdateUserPasswordMutation extends Mutation
     {
         return [
             'id' => ['name' => 'id', 'type' => Type::nonNull(Type::string())],
-            'password' => ['name' => 'password', 'type' => Type::nonNull(Type::string())]
+            'email' => ['name' => 'email', 'type' => Type::nonNull(Type::string())],            
         ];
     }
+
 
     public function rules()
     {
         return [
             'id' => ['required'],
-            'password' => ['required', 'email']
+            'email' => ['required', 'email'],
         ];
     }
-    
-    public function resolve($root, $args)
+
+    public function resolve($root, $args, $context, ResolveInfo $info)
     {
         $user = User::find($args['id']);
 
@@ -42,7 +45,7 @@ class UpdateUserPasswordMutation extends Mutation
             return null;
         }
 
-        $user->password = bcrypt($args['password']);
+        $user->email = $args['email'];
         $user->save();
 
         return $user;
