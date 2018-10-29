@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 class Video extends Model
 {
     /**
@@ -21,4 +24,27 @@ class Video extends Model
     {
         return $this->morphToMany('App\Tag', 'taggable');
     }
+
+
+    /**
+     * upload a video file 
+     */
+    public static function upload(Request $request)
+    {
+      $uploadedFile = $request->file('file');
+      $filename = time().$uploadedFile->getClientOriginalName();
+
+      $upload = Storage::disk('local')->putFileAs(
+        'files/',
+        $uploadedFile,
+        $filename
+      );
+
+      return $contents = Storage::url('files/'.$filename);
+
+    }
+
+
+
+
 }

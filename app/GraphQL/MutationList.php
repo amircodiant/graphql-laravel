@@ -16,7 +16,7 @@ final class MutationList
  		'deleteUser'			 		=> 'App\GraphQL\Mutation\User\UserDeteteMutation',
 
 
- 		'addNewVideo'			 		=> 'App\GraphQL\Mutation\Video\addNewVideo',
+ 		'addNewVideo'			 		=> 'App\GraphQL\Mutation\Video\AddNewVideoMutation',
  	];
 
  	/**

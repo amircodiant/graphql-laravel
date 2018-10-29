@@ -7,7 +7,7 @@ use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
 
-class addNewVideo extends Mutation
+class AddNewVideoMutation extends Mutation
 {
     protected $attributes = [
         'name' => 'addNewVideo',
@@ -16,7 +16,7 @@ class addNewVideo extends Mutation
 
     public function type()
     {
-        return GraphQL::type('User');
+        return GraphQL::type('Video');
     }
 
     public function args()
@@ -38,7 +38,9 @@ class addNewVideo extends Mutation
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
+        $files = request()->file('file')->store('files');
         print_r($args);
+        print_r(request()->file());
         die;
     }
 }

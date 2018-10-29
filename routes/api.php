@@ -20,4 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/test-api', function (Request $request) {
     return ["name"=>"Amir Ansari"];
+})->name('amir.ansari');
+
+Route::post('/upload-file', function (Request $request) {
+    return $request->file('file')->store('files');
+
 });
