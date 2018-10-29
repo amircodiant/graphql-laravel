@@ -10,8 +10,8 @@ final class TypeList
  	 *@param unique key value list for graphql type 
  	 */
  	private static $typeList = [
- 		'User' 				=> 'App\GraphQL\Type\UserType',
- 		'Video' 			=> 'App\GraphQL\Type\VideoType',
+ 		'User' 				=> \App\GraphQL\Type\UserType::class,
+ 		'Video' 			=> \App\GraphQL\Type\VideoType::class,
  	];
 
  	/**
