@@ -23,6 +23,8 @@ Route::get('/test-api', function (Request $request) {
 })->name('amir.ansari');
 
 Route::post('/upload-file', function (Request $request) {
-    return $request->file('file')->store('files');
+    // return $request->file('file')->store('files');
+
+    return \App\Video::upload($request);
 
 });

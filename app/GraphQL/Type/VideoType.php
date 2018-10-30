@@ -33,6 +33,6 @@ class VideoType extends BaseType
 
     protected function resolveUrlField($root, $args)
     {
-        return 'http://'.strtolower($root->url);
+        return asset($root->url);
     }
 }

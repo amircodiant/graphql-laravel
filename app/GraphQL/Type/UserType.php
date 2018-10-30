@@ -3,7 +3,8 @@ namespace App\GraphQL\Type;
 
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Type as GraphQLType;
-
+use GraphQL;
+use App\Video;
 class UserType extends GraphQLType
 {
     protected $attributes = [
@@ -35,7 +36,9 @@ class UserType extends GraphQLType
             'password' => [
                 'type' => Type::string(),
                 'description' => 'The password of user'
-            ]
+            ],
+            'videos' => \App\GraphQL\Query\Video\VideosQuery::class,
+            'video' =>  \App\GraphQL\Query\Video\VideoQuery::class
         ];
     }
 
@@ -50,4 +53,6 @@ class UserType extends GraphQLType
     {
         return 'nothing';
     }
+
+
 }

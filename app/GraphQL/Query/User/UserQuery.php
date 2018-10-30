@@ -36,7 +36,7 @@ class UserQuery extends Query
         if (!$user) {
             return null;
         }
-
+        
         return $user;
     }
 }

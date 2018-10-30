@@ -7,6 +7,7 @@ use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
 use App\Video;
+use App\User;
 
 class VideoQuery extends Query
 {
@@ -18,23 +19,31 @@ class VideoQuery extends Query
     public function type()
     {
         return GraphQL::type('Video');
-    }
+    }   
 
     public function args()
     {
         return [
-            'id' => ['name' => 'id', 'type' => Type::nonNull(Type::string())]
+            'id' => ['name' => 'id', 'type' => Type::string()]
         ];
     }
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-         $model = Video::find($args['id']);
+        $id = '';
+        if ($root instanceof User) {
+           $id = 6; 
+        }else{
+            $id = isset($args['id']) ? $args['id'] : '';
+        } 
+        
+        $model = Video::find($id);
 
         if (!$model) {
             return null;
         }
 
         return $model;
+        
     }
 }

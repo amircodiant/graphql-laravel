@@ -34,13 +34,17 @@ class Video extends Model
       $uploadedFile = $request->file('file');
       $filename = time().$uploadedFile->getClientOriginalName();
 
+      // $files = $request->file($args['file'])->store('public/files');
       $upload = Storage::disk('local')->putFileAs(
-        'files/',
+        'public/videos/',
         $uploadedFile,
         $filename
       );
-
-      return $contents = Storage::url('files/'.$filename);
+      if($upload){
+        return $contents = Storage::url('public/videos/'.$filename);
+      }else{
+        return null;
+      }
 
     }
 
