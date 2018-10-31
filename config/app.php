@@ -181,6 +181,8 @@ return [
          */
         Folklore\GraphQL\ServiceProvider::class,
 
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+
     ],
 
     /*
