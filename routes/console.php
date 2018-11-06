@@ -16,3 +16,13 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+Artisan::command('build {project*}', function ($project) {
+
+
+	Artisan::callSilent('email:send', [
+            'email' => "amir", '--queue' => 'default'
+        ]);
+
+    print_r($project);
+})->describe('Test building project command');
