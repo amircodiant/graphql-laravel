@@ -18,6 +18,7 @@ final class MutationList
 
  		'addNewVideo'			 		=> \App\GraphQL\Mutation\Video\AddNewVideoMutation::class,
  		'userSignup'			 		=> \App\GraphQL\Mutation\Auth\UserSignUpMutation::class,
+ 		'userLogin'			 			=> \App\GraphQL\Mutation\Auth\UserLoginMutation::class,
  	];
 
  	/**

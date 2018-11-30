@@ -37,6 +37,7 @@ class UserLoginMutation extends Mutation
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
+        // error_log(print_r($args, TRUE));
         $credentials = [
           'email' => $args['email'],
           'password' => $args['password']

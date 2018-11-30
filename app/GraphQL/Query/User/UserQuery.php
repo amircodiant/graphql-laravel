@@ -2,6 +2,7 @@
 
 namespace App\GraphQL\Query\User;
 
+use Illuminate\Support\Facades\Auth;
 use Folklore\GraphQL\Support\Query;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
@@ -28,9 +29,15 @@ class UserQuery extends Query
         ];
     }
 
+    public function authenticated($root, $args, $currentUser)
+    {
+        return !!$currentUser;
+    }
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
+        $user = Auth::user();
+        error_log(print_r($user->email,true));
         $user = User::find($args['id']);
 
         if (!$user) {
